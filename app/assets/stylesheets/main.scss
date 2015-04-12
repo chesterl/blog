@@ -15,6 +15,11 @@ p textarea {
 	display: block;
 }
 
+img {
+	width: 100%;
+	height: auto;
+}
+
 .sidebar {
 	width: 250px;
 	position: fixed;
@@ -26,6 +31,7 @@ p textarea {
 	border-right: 1px solid #d6dce0;
 	.logo {
 		width: 40px;
+		height: auto;
 		position: absolute;
 		right: 3em;
 		top: 3em;
