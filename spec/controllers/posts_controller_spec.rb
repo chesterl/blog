@@ -58,12 +58,8 @@ describe PostsController do
   end
 
   describe 'POST #create' do
-    # before :each do
-    #   @posts = [ attributes_for(:post) ]
-    # end
-
     context 'with valid attributes' do
-      it 'saves the next post in the database' do
+      it 'saves the new post in the database' do
         expect {
           post :create, post: attributes_for(:post)
         }.to change(Post, :count).by(1)
