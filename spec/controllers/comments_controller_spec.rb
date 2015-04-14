@@ -46,7 +46,6 @@ describe CommentsController do
 
     #where does the extra post come from??
     it 'deletes the comment' do
-      binding.pry
       expect {
         delete :destroy, id: @comment, post_id: @comment.post_id
       }.to change(Comment,:count).by(-1)
@@ -57,8 +56,5 @@ describe CommentsController do
       expect(reponse).to redirect_to @post
     end
   end
-
-  # dependent destroy model?
-
 
 end

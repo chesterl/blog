@@ -18,4 +18,12 @@ describe 'Comment' do
     expect(comment.errors[:body]).to include("can't be blank")
   end
 
+  #need to implement
+  it 'should destroy all commments when a post is destroyed' do
+    post = create(:post)
+    comment = create(:comment)
+    binding.pry
+  end
+
+
 end
