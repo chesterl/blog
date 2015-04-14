@@ -25,5 +25,4 @@ describe 'Comment' do
     binding.pry
   end
 
-
 end
