@@ -1,12 +1,8 @@
 require 'rails_helper'
 
 describe PostsController do
-  describe 'user access' do
-    before :each do
-      user = create(:user)
-      sign_in user
-    end
 
+  shared_examples 'public access to posts' do
     describe 'GET #show' do
       #i don't get this example
       it 'assigns the requested Post to @post' do
@@ -34,6 +30,15 @@ describe PostsController do
         expect(response).to render_template :index
       end
     end
+  end
+
+  describe 'user access' do
+    before :each do
+      user = create(:user)
+      sign_in user
+    end
+
+    it_behaves_like 'public access to posts'
 
     describe 'GET #new' do
 
@@ -149,33 +154,8 @@ describe PostsController do
   end
 
   describe 'User not logged in' do
-    describe 'GET #show' do
-      #i don't get this example
-      it 'assigns the requested Post to @post' do
-        post = create(:post)
-        get :show, id: post
-        expect(assigns(:post)).to eq post
-      end
 
-      it 'renders the :show template' do
-        post = create(:post)
-        get :show, id: post
-        expect(response).to render_template :show
-      end
-    end
-
-    describe 'GET #index' do
-      it 'populates an array with all posts' do
-        post = create(:post)
-        get :index
-        expect(assigns(:posts)).to match_array([post])
-      end
-
-      it 'renders the :index template' do
-        get :index
-        expect(response).to render_template :index
-      end
-    end
+    it_behaves_like 'public access to posts'
 
     describe 'GET #new' do
       it 'requires login' do
